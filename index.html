@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
-  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+        content="ExpertGen: Scalable Sim-to-Real Expert Policy Learning from Imperfect Behavior Priors">
+  <meta name="keywords" content="Sim-to-Real, Offline-to-Online RL, Diffusion Policy">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nerfies: Deformable Neural Radiance Fields</title>
+  <title>ExpertGen: Scalable Sim-to-Real Expert Policy Learning from Imperfect Behavior Priors</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -34,7 +34,6 @@
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="icon" href="./static/images/favicon.svg">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
@@ -42,85 +41,56 @@
 </head>
 <body>
 
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div class="navbar-menu">
-    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://keunhong.com">
-      <span class="icon">
-          <i class="fas fa-home"></i>
-      </span>
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More Research
-        </a>
-        <div class="navbar-dropdown">
-          <a class="navbar-item" href="https://hypernerf.github.io">
-            HyperNeRF
-          </a>
-          <a class="navbar-item" href="https://nerfies.github.io">
-            Nerfies
-          </a>
-          <a class="navbar-item" href="https://latentfusion.github.io">
-            LatentFusion
-          </a>
-          <a class="navbar-item" href="https://photoshape.github.io">
-            PhotoShape
-          </a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</nav>
-
 
 <section class="hero">
   <div class="hero-body">
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Nerfies: Deformable Neural Radiance Fields</h1>
+          <h1 class="title is-2 publication-title"><span class="textsc">ExpertGen</span>: Scalable Sim-to-Real Expert Policy Learning from Imperfect Behavior Priors</h1>
+          <br>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://keunhong.com">Keunhong Park</a><sup>1</sup>,</span>
+              <a href="https://daffan.github.io/">Zifan Xu</a><sup>1</sup><sup>*</sup>,</span>
             <span class="author-block">
-              <a href="https://utkarshsinha.com">Utkarsh Sinha</a><sup>2</sup>,</span>
+              <a href="https://nikepupu.github.io/">Ran Gong</a><sup>2</sup>,</span>
             <span class="author-block">
-              <a href="https://jonbarron.info">Jonathan T. Barron</a><sup>2</sup>,
-            </span>
+              <a href="https://scholar.google.com/citations?user=zKWcawIAAAAJ&hl=en">Maria Vittoria Minniti</a><sup>2</sup>,</span>
             <span class="author-block">
-              <a href="http://sofienbouaziz.com">Sofien Bouaziz</a><sup>2</sup>,
-            </span>
+              <a href="https://www.linkedin.com/in/ahmet-salih-gundogdu/">Ahmet Salih Gundogdu</a><sup>2</sup>,</span>
             <span class="author-block">
-              <a href="https://www.danbgoldman.com">Dan B Goldman</a><sup>2</sup>,
-            </span>
+              <a href="https://eric-rosen.github.io/">Eric Rosen</a><sup>2</sup>,</span>
             <span class="author-block">
-              <a href="https://homes.cs.washington.edu/~seitz/">Steven M. Seitz</a><sup>1,2</sup>,
-            </span>
+              <a href="https://kausiksivakumar.github.io/">Kausik Sivakumar</a><sup>2</sup>,</span>
             <span class="author-block">
-              <a href="http://www.ricardomartinbrualla.com">Ricardo Martin-Brualla</a><sup>2</sup>
-            </span>
+              <a href="https://www.linkedin.com/in/riedana-yan-798471192/">Riedana Yan</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://wzx16.github.io/">Zixing Wang</a><sup>3</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=zumK8HkAAAAJ&hl=en">Di Deng</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.cs.utexas.edu/~pstone/">Peter Stone</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://keke-220.github.io/">Xiaohan Zhang</a><sup>2</sup><sup>&dagger;</sup>,</span>
+            <span class="author-block">
+              <a href="https://sites.google.com/view/karlschmeckpeper">Karl Schmeckpeper</a><sup>2</sup><sup>&dagger;</sup></span>
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>University of Washington,</span>
-            <span class="author-block"><sup>2</sup>Google Research</span>
+            <span class="author-block"><sup>1</sup>University of Texas at Austin,</span>
+            <span class="author-block"><sup>2</sup>Robotics and AI Institute,</span>
+            <span class="author-block"><sup>3</sup>Purdue University</span>
+          </div>
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>*</sup> The work is done while Zifan was an intern at RAI.</span>
+            <span class="author-block"><sup>&dagger;</sup> Equal advising.</span>
           </div>
 
           <div class="column has-text-centered">
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://arxiv.org/pdf/2011.12948"
+                <a href="https://arxiv.org/pdf/xxxxxx"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -129,7 +99,7 @@
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2011.12948"
+                <a href="https://arxiv.org/abs/xxxxxx"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -138,7 +108,7 @@
                 </a>
               </span>
               <!-- Video Link. -->
-              <span class="link-block">
+              <!-- <span class="link-block">
                 <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -146,9 +116,9 @@
                   </span>
                   <span>Video</span>
                 </a>
-              </span>
+              </span> -->
               <!-- Code Link. -->
-              <span class="link-block">
+              <!-- <span class="link-block">
                 <a href="https://github.com/google/nerfies"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -156,16 +126,16 @@
                   </span>
                   <span>Code</span>
                   </a>
-              </span>
+              </span> -->
               <!-- Dataset Link. -->
-              <span class="link-block">
+              <!-- <span class="link-block">
                 <a href="https://github.com/google/nerfies/releases/tag/0.1"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="far fa-images"></i>
                   </span>
                   <span>Data</span>
-                  </a>
+                  </a> -->
             </div>
 
           </div>
@@ -176,79 +146,41 @@
 </section>
 
 <section class="hero teaser">
-  <div class="container is-max-desktop">
+  <!-- <div class="container is-max-desktop">
     <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/teaser.mp4"
-                type="video/mp4">
-      </video>
-      <h2 class="subtitle has-text-centered">
-        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
-        free-viewpoint
-        portraits.
-      </h2>
-    </div>
-  </div>
-</section>
-
-
-<section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-steve">
-          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/steve.mp4"
-                    type="video/mp4">
+      <div class="columns is-variable is-3 is-multiline is-centered">
+        <div class="column is-4-desktop is-6-tablet">
+          <video class="teaser-video" autoplay controls muted loop playsinline>
+            <source src="./static/videos/ExpertGen-BananaLift.mp4" type="video/mp4">
           </video>
         </div>
-        <div class="item item-chair-tp">
-          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/chair-tp.mp4"
-                    type="video/mp4">
+        <div class="column is-4-desktop is-6-tablet">
+          <video class="teaser-video" autoplay controls muted loop playsinline>
+            <source src="./static/videos/ExpertGen-OpenDrawer.mp4" type="video/mp4">
           </video>
         </div>
-        <div class="item item-shiba">
-          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/shiba.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-fullbody">
-          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/fullbody.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-blueshirt">
-          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/blueshirt.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-mask">
-          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/mask.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-coffee">
-          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/coffee.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-toby">
-          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/toby2.mp4"
-                    type="video/mp4">
+        <div class="column is-4-desktop is-6-tablet">
+          <video class="teaser-video" autoplay controls muted loop playsinline>
+            <source src="./static/videos/ExpertGen-PushPear.mp4" type="video/mp4">
           </video>
         </div>
       </div>
+      <h2 class="subtitle has-text-centered">
+        Zero-shot sim-to-real trasnfer of visuomotor policies without <i>any</i> reward engineering.
+      </h2>
+    </div>
+  </div> -->
+  <div class="container is-max-desktop">
+    <div class="hero-body has-text-centered">
+      <figure class="image">
+        <img class="teaser-image"
+             src="./static/images/teaser.png"
+             alt="ExpertGen teaser figure">
+      </figure>
+      <span class="textsc has-text-centered">ExpertGen</span> pipeline: (left) generative modeling of imperfect behavior priors; (middle) steering prior model in massively parallel simulation using RL; and (right) visual distillation in simulation with DAgger for zero-shot sim-to-real transfer.</span>  
     </div>
   </div>
 </section>
-
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -258,31 +190,28 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            We present the first method capable of photorealistically reconstructing a non-rigidly
-            deforming scene using photos/videos captured casually from mobile phones.
+          Learning generalizable and robust behavior cloning policies requires large volumes 
+          of high-quality robotics data. While human demonstrations (e.g., through teleoperation) 
+          serve as the standard source for expert behaviors, acquiring such data at scale in the 
+          real world is prohibitively expensive. This paper introduces <span class="textsc">ExpertGen</span>, a 
+          framework that automates expert policy learning in simulation to enable scalable 
+          sim-to-real transfer. <span class="textsc">ExpertGen</span> first initializes a behavior prior using a 
+          diffusion policy trained on imperfect demonstrations, which may be synthesized by 
+          large language models or provided by humans. Reinforcement learning is then used 
+          to steer this prior toward high task success by optimizing the diffusion model’s 
+          initial noise while keep original policy frozen. By keeping the pretrained diffusion 
+          policy frozen, <span class="textsc">ExpertGen</span> regularizes exploration to remain within safe, 
+          human-like behavior manifolds, while also enabling effective learning with only sparse rewards.
           </p>
           <p>
-            Our approach augments neural radiance fields
-            (NeRF) by optimizing an
-            additional continuous volumetric deformation field that warps each observed point into a
-            canonical 5D NeRF.
-            We observe that these NeRF-like deformation fields are prone to local minima, and
-            propose a coarse-to-fine optimization method for coordinate-based models that allows for
-            more robust optimization.
-            By adapting principles from geometry processing and physical simulation to NeRF-like
-            models, we propose an elastic regularization of the deformation field that further
-            improves robustness.
-          </p>
-          <p>
-            We show that <span class="dnerf">Nerfies</span> can turn casually captured selfie
-            photos/videos into deformable NeRF
-            models that allow for photorealistic renderings of the subject from arbitrary
-            viewpoints, which we dub <i>"nerfies"</i>. We evaluate our method by collecting data
-            using a
-            rig with two mobile phones that take time-synchronized photos, yielding train/validation
-            images of the same pose at different viewpoints. We show that our method faithfully
-            reconstructs non-rigidly deforming scenes and reproduces unseen views with high
-            fidelity.
+          Empirical evaluations on challenging manipulation benchmarks demonstrate that <span class="textsc">ExpertGen</span> 
+          reliably produces high-quality expert policies with no reward engineering. On industrial 
+          assembly tasks, <span class="textsc">ExpertGen</span> achieves a 90.5% overall success rate, while on 
+          long-horizon manipulation tasks it attains 85% overall success, outperforming all 
+          baseline methods. The resulting policies exhibit dexterous control and remain robust 
+          across diverse initial configurations and failure states. To validate sim-to-real transfer
+          , the learned state-based expert policies are further distilled into visuomotor policies 
+          via DAgger and successfully deployed on real robotic hardware.
           </p>
         </div>
       </div>
@@ -290,7 +219,7 @@
     <!--/ Abstract. -->
 
     <!-- Paper video. -->
-    <div class="columns is-centered has-text-centered">
+    <!-- <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Video</h2>
         <div class="publication-video">
@@ -298,145 +227,1379 @@
                   frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
       </div>
-    </div>
+    </div> -->
     <!--/ Paper video. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Sim-to-Real Transfer</h2>
+
+        <div class="buttons is-centered sim2real-selector">
+          <button class="button is-link is-light is-selected"
+                  type="button"
+                  data-sim2real-target="banana-lift"
+                  aria-controls="sim2real-panel-banana-lift"
+                  aria-selected="true">
+            Lift Banana
+          </button>
+          <button class="button is-link is-light"
+                  type="button"
+                  data-sim2real-target="open-drawer"
+                  aria-controls="sim2real-panel-open-drawer"
+                  aria-selected="false">
+            Open Drawer
+          </button>
+          <button class="button is-link is-light"
+                  type="button"
+                  data-sim2real-target="push-pear"
+                  aria-controls="sim2real-panel-push-pear"
+                  aria-selected="false">
+            Push Pear
+          </button>
+        </div>
+
+        <div class="sim2real-panels">
+          <div id="sim2real-panel-banana-lift" class="sim2real-panel">
+            <video id="banana-lift-video"
+                   controls
+                   muted
+                   autoplay
+                   loop
+                   playsinline
+                   width="75%"
+                   style="border-radius: 10px;">
+              <source src="./static/videos/ExpertGen-BananaLift.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div id="sim2real-panel-open-drawer" class="sim2real-panel is-hidden">
+            <video id="open-drawer-video"
+                   controls
+                   muted
+                   autoplay
+                   loop
+                   playsinline
+                   width="75%"
+                   style="border-radius: 10px;">
+              <source src="./static/videos/ExpertGen-OpenDrawer.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div id="sim2real-panel-push-pear" class="sim2real-panel is-hidden">
+            <video id="push-pear-video"
+                   controls
+                   muted
+                   autoplay
+                   loop
+                   playsinline
+                   width="75%"
+                   style="border-radius: 10px;">
+              <source src="./static/videos/ExpertGen-PushPear.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
 </section>
 
 
 <section class="section">
   <div class="container is-max-desktop">
-
-    <div class="columns is-centered">
-
-      <!-- Visual Effects. -->
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-3">Visual Effects</h2>
-          <p>
-            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
-            would be impossible without nerfies since it would require going through a wall.
-          </p>
-          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/dollyzoom-stacked.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-      <!--/ Visual Effects. -->
-
-      <!-- Matting. -->
-      <div class="column">
-        <h2 class="title is-3">Matting</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-            <p>
-              As a byproduct of our method, we can also solve the matting problem by ignoring
-              samples that fall outside of a bounding box during rendering.
-            </p>
-            <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/matting.mp4"
-                      type="video/mp4">
-            </video>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    <!--/ Matting. -->
-
-    <!-- Animation. -->
-    <div class="columns is-centered">
+    <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Animation</h2>
+        <h2 class="title is-3">Baselines</h2>
 
-        <!-- Interpolating. -->
-        <h3 class="title is-4">Interpolating states</h3>
-        <div class="content has-text-justified">
-          <p>
-            We can also animate the scene by interpolating the deformation latent codes of two input
-            frames. Use the slider here to linearly interpolate between the left frame and the right
-            frame.
-          </p>
+        <div class="buttons is-centered is-small compare-task-selector">
+          <button class="button is-link is-light is-selected"
+                  type="button"
+                  data-compare-task="task-0"
+                  aria-controls="compare-task-0"
+                  aria-selected="true">
+            Lift Banana
+          </button>
+          <button class="button is-link is-light"
+                  type="button"
+                  data-compare-task="task-2"
+                  aria-controls="compare-task-2"
+                  aria-selected="false">
+            Open Drawer
+          </button>
+          <button class="button is-link is-light"
+                  type="button"
+                  data-compare-task="task-6"
+                  aria-controls="compare-task-6"
+                  aria-selected="false">
+            Push Pear
+          </button>
         </div>
-        <div class="columns is-vcentered interpolation-panel">
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_start.jpg"
-                 class="interpolation-image"
-                 alt="Interpolate start reference image."/>
-            <p>Start Frame</p>
-          </div>
-          <div class="column interpolation-video-column">
-            <div id="interpolation-image-wrapper">
-              Loading...
+
+        <div class="compare-task-panels">
+          <div id="compare-task-0" class="compare-task-panel">
+            <!-- <h3 class="title is-4">Lift Banana</h3> -->
+            <div class="columns is-variable is-3 is-centered compare-row">
+              <div class="column is-4">
+                <p class="has-text-centered"><b>ExpertGen</b></p>
+                <video class="compare-video" controls muted autoplay loop playsinline>
+                  <source src="./static/videos/compare/task_0_expertgen.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4">
+                <p class="has-text-centered"><b>Diffusion Policy</b></p>
+                <video class="compare-video" controls muted autoplay loop playsinline>
+                  <source src="./static/videos/compare/task_0_base.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4">
+                <p class="has-text-centered"><b>Residual RL</b></p>
+                <video class="compare-video" controls muted autoplay loop playsinline>
+                  <source src="./static/videos/compare/task_0_residual.mp4" type="video/mp4">
+                </video>
+              </div>
             </div>
-            <input class="slider is-fullwidth is-large is-info"
-                   id="interpolation-slider"
-                   step="1" min="0" max="100" value="0" type="range">
           </div>
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_end.jpg"
-                 class="interpolation-image"
-                 alt="Interpolation end reference image."/>
-            <p class="is-bold">End Frame</p>
-          </div>
-        </div>
-        <br/>
-        <!--/ Interpolating. -->
 
-        <!-- Re-rendering. -->
-        <h3 class="title is-4">Re-rendering the input video</h3>
-        <div class="content has-text-justified">
-          <p>
-            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
-            viewpoint such as a stabilized camera by playing back the training deformations.
-          </p>
+          <div id="compare-task-2" class="compare-task-panel is-compare-hidden">
+            <!-- <h3 class="title is-4">Open Drawer</h3> -->
+            <div class="columns is-variable is-3 is-centered compare-row">
+              <div class="column is-4">
+                <p class="has-text-centered"><b>ExpertGen</b></p>
+                <video class="compare-video" controls muted autoplay loop playsinline>
+                  <source src="./static/videos/compare/task_2_expertgen.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4">
+                <p class="has-text-centered"><b>Diffusion Policy</b></p>
+                <video class="compare-video" controls muted autoplay loop playsinline>
+                  <source src="./static/videos/compare/task_2_base.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4">
+                <p class="has-text-centered"><b>Residual RL</b></p>
+                <video class="compare-video" controls muted autoplay loop playsinline>
+                  <source src="./static/videos/compare/task_2_residual.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <div id="compare-task-6" class="compare-task-panel is-compare-hidden">
+            <h3 class="title is-4">Push Pear</h3>
+            <div class="columns is-variable is-3 is-centered compare-row">
+              <div class="column is-4">
+                <p class="has-text-centered"><b>ExpertGen</b></p>
+                <video class="compare-video" controls muted autoplay loop playsinline>
+                  <source src="./static/videos/compare/task_6_expertgen.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4">
+                <p class="has-text-centered"><b>Diffusion Policy</b></p>
+                <video class="compare-video" controls muted autoplay loop playsinline>
+                  <source src="./static/videos/compare/task_6_base.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="column is-4">
+                <p class="has-text-centered"><b>Residual RL</b></p>
+                <video class="compare-video" controls muted autoplay loop playsinline>
+                  <source src="./static/videos/compare/task_6_residual.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="75%">
-            <source src="./static/videos/replay.mp4"
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-light is-small has-text-centered">
+  <div class="hero-body">
+    <div class="container">
+
+      <h2 class="title is-3">ExpertGen (Simulation) - AnyTask</h2>
+
+      <div class="buttons is-centered is-small anytask-selector">
+        <button class="button is-link is-light is-selected"
+                type="button"
+                data-anytask-target="lift-banana"
+                aria-controls="anytask-panel-lift-banana"
+                aria-selected="true">
+          Lift Banana
+        </button>
+        <button class="button is-link is-light"
+                type="button"
+                data-anytask-target="lift-brick"
+                aria-controls="anytask-panel-lift-brick"
+                aria-selected="false">
+          Lift Brick
+        </button>
+        <button class="button is-link is-light"
+                type="button"
+                data-anytask-target="open-drawer"
+                aria-controls="anytask-panel-open-drawer"
+                aria-selected="false">
+          Open Drawer
+        </button>
+        <button class="button is-link is-light"
+                type="button"
+                data-anytask-target="stack-banana"
+                aria-controls="anytask-panel-stack-banana"
+                aria-selected="false">
+          Stack Banana
+        </button>
+        <button class="button is-link is-light"
+                type="button"
+                data-anytask-target="lift-pear"
+                aria-controls="anytask-panel-lift-pear"
+                aria-selected="false">
+          Lift Pear
+        </button>
+        <button class="button is-link is-light"
+                type="button"
+                data-anytask-target="put-object-in-closed-drawer"
+                aria-controls="anytask-panel-put-object-in-closed-drawer"
+                aria-selected="false">
+          Put Object in Closed Drawer
+        </button>
+        <button class="button is-link is-light"
+                type="button"
+                data-anytask-target="push-pear"
+                aria-controls="anytask-panel-push-pear"
+                aria-selected="false">
+          Push Pear
+        </button>
+        <button class="button is-link is-light"
+                type="button"
+                data-anytask-target="put-strawberry-in-bowl"
+                aria-controls="anytask-panel-put-strawberry-in-bowl"
+                aria-selected="false">
+          Put Strawberry in Bowl
+        </button>
+      </div>
+
+      <div class="anytask-panels">
+      <div id="anytask-panel-lift-banana" class="anytask-panel">
+      <!-- Lift Banana. -->
+      <!-- <h3 class="title is-4">Lift Banana</h3> -->
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/0/env_0_recording.mp4"
                     type="video/mp4">
           </video>
         </div>
-        <!--/ Re-rendering. -->
-
-      </div>
-    </div>
-    <!--/ Animation. -->
-
-
-    <!-- Concurrent Work. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
-
-        <div class="content has-text-justified">
-          <p>
-            There's a lot of excellent work that was introduced around the same time as ours.
-          </p>
-          <p>
-            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
-          </p>
-          <p>
-            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
-            both use deformation fields to model non-rigid scenes.
-          </p>
-          <p>
-            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
-          </p>
-          <p>
-            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
-          </p>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/0/env_1_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/0/env_2_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/0/env_3_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/0/env_4_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/0/env_5_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/0/env_6_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/0/env_7_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-towel">
+          <video poster="" id="towel" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00783/env_8_recording.mp4"
+                    type="video/mp4">
+          </video>
         </div>
       </div>
-    </div>
-    <!--/ Concurrent Work. -->
+      <br/>
+      </div>
 
+      <div id="anytask-panel-lift-brick" class="anytask-panel is-anytask-hidden">
+      <!-- Lift Brick. -->
+      <!-- <h3 class="title is-4">Lift Brick</h3> -->
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/1/env_0_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/1/env_1_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/1/env_2_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/1/env_3_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/1/env_4_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/1/env_5_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/1/env_6_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/1/env_7_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-towel">
+          <video poster="" id="towel" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/1/env_8_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <br/>
+      </div>
+
+      <div id="anytask-panel-open-drawer" class="anytask-panel is-anytask-hidden">
+      <!-- Open Drawer. -->
+      <!-- <h3 class="title is-4">Open Drawer</h3> -->
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/2/env_0_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/2/env_1_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/2/env_2_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/2/env_3_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/2/env_4_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/2/env_5_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/2/env_6_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/2/env_7_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-towel">
+          <video poster="" id="towel" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/2/env_8_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <br/>
+      </div>
+
+      <div id="anytask-panel-stack-banana" class="anytask-panel is-anytask-hidden">
+      <!-- Stack Banana. -->
+      <!-- <h3 class="title is-4">Stack Banana</h3> -->
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/3/01/env_0_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/3/02/env_1_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/3/01/env_2_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/3/01/env_3_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/3/02/env_4_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/3/01/env_5_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/3/01/env_6_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/3/01/env_7_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-towel">
+          <video poster="" id="towel" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/3/02/env_8_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <br/>
+      </div>
+
+      <div id="anytask-panel-lift-pear" class="anytask-panel is-anytask-hidden">
+      <!-- Lift Pear. -->
+      <!-- <h3 class="title is-4">Lift Pear</h3> -->
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/4/env_0_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/4/env_1_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/4/env_2_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/4/env_3_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/4/env_4_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/4/env_5_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/4/env_6_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/4/env_7_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-towel">
+          <video poster="" id="towel" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/4/env_8_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <br/>
+      </div>
+
+      <div id="anytask-panel-put-object-in-closed-drawer" class="anytask-panel is-anytask-hidden">
+      <!-- Put Object in Closed Drawer. -->
+      <!-- <h3 class="title is-4">Put Object in Closed Drawer</h3> -->
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/5/01/env_0_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/5/01/env_1_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/5/02/env_2_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/5/01/env_3_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/5/01/env_4_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/5/02/env_1_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/5/02/env_6_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/5/01/env_7_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-towel">
+          <video poster="" id="towel" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/5/02/env_0_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <br/>
+      </div>
+
+      <div id="anytask-panel-push-pear" class="anytask-panel is-anytask-hidden">
+      <!-- Push Pear. -->
+      <!-- <h3 class="title is-4">Push Pear</h3> -->
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/6/env_0_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/6/env_1_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/6/env_2_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/6/env_3_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/6/env_4_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/6/env_5_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/6/env_6_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/6/env_7_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-towel">
+          <video poster="" id="towel" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/6/env_8_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <br/>
+      </div>
+
+      <div id="anytask-panel-put-strawberry-in-bowl" class="anytask-panel is-anytask-hidden">
+      <!-- Put Strawberry in Bowl. -->
+      <!-- <h3 class="title is-4">Put Strawberry in Bowl</h3> -->
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/7/02/env_0_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/7/02/env_1_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/7/02/env_2_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/7/01/env_3_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/7/01/env_4_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/7/02/env_5_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/7/02/env_6_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/7/01/env_7_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-towel">
+          <video poster="" id="towel" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/anytask/7/02/env_8_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <br/>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="hero is-light is-small has-text-centered">
+  <div class="hero-body">
+    <div class="container">
+
+      <h2 class="title is-3">ExpertGen (Simulation) - AutoMate</h2>
+
+      <div class="buttons is-centered is-small automate-selector">
+        <button class="button is-link is-light is-selected"
+                type="button"
+                data-automate-target="00783"
+                aria-controls="automate-panel-00783"
+                aria-selected="true">
+          00783
+        </button>
+        <button class="button is-link is-light"
+                type="button"
+                data-automate-target="00081"
+                aria-controls="automate-panel-00081"
+                aria-selected="false">
+          00081
+        </button>
+        <button class="button is-link is-light"
+                type="button"
+                data-automate-target="00703"
+                aria-controls="automate-panel-00703"
+                aria-selected="false">
+          00703
+        </button>
+        <button class="button is-link is-light"
+                type="button"
+                data-automate-target="00032"
+                aria-controls="automate-panel-00032"
+                aria-selected="false">
+          00032
+        </button>
+        <button class="button is-link is-light"
+                type="button"
+                data-automate-target="00581"
+                aria-controls="automate-panel-00581"
+                aria-selected="false">
+          00581
+        </button>
+        <button class="button is-link is-light"
+                type="button"
+                data-automate-target="00506"
+                aria-controls="automate-panel-00506"
+                aria-selected="false">
+          00506
+        </button>
+        <button class="button is-link is-light"
+                type="button"
+                data-automate-target="00175"
+                aria-controls="automate-panel-00175"
+                aria-selected="false">
+          00175
+        </button>
+        <button class="button is-link is-light"
+                type="button"
+                data-automate-target="00308"
+                aria-controls="automate-panel-00308"
+                aria-selected="false">
+          00308
+        </button>
+        <button class="button is-link is-light"
+                type="button"
+                data-automate-target="00726"
+                aria-controls="automate-panel-00726"
+                aria-selected="false">
+          00726
+        </button>
+      </div>
+
+      <div class="automate-panels">
+      <!-- 00783. -->
+      <div id="automate-panel-00783" class="automate-panel">
+      <!-- <h3 class="title is-4">00783</h3> -->
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00783/env_0_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00783/env_1_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00783/env_2_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00783/env_3_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00783/env_4_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00783/env_5_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00783/env_6_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00783/env_7_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-towel">
+          <video poster="" id="towel" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00783/env_8_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <br/>
+      </div>
+
+      <!-- 00081. -->
+      <div id="automate-panel-00081" class="automate-panel is-automate-hidden">
+      <!-- <h3 class="title is-4">00081</h3> -->
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00081/env_0_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00081/env_1_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00081/env_2_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00081/env_3_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00081/env_4_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00081/env_5_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00081/env_6_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00081/env_7_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-towel">
+          <video poster="" id="towel" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00081/env_8_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <br/>
+      </div>
+
+      <!-- 00703. -->
+      <div id="automate-panel-00703" class="automate-panel is-automate-hidden">
+      <!-- <h3 class="title is-4">00703</h3> -->
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00703/env_0_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00703/env_1_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00703/env_2_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00703/env_3_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00703/env_4_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00703/env_5_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00703/env_6_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00703/env_7_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-towel">
+          <video poster="" id="towel" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00703/env_8_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <br/>
+      </div>
+
+      <!-- 00032. -->
+      <div id="automate-panel-00032" class="automate-panel is-automate-hidden">
+      <!-- <h3 class="title is-4">00032</h3> -->
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00032/env_0_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00032/env_1_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00032/env_2_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00032/env_3_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00032/env_4_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00032/env_5_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00032/env_6_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00032/env_7_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-towel">
+          <video poster="" id="towel" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00032/env_8_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <br/>
+      </div>
+
+      <!-- 00581. -->
+      <div id="automate-panel-00581" class="automate-panel is-automate-hidden">
+      <!-- <h3 class="title is-4">00581</h3> -->
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00581/env_0_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00581/env_1_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00581/env_2_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00581/env_3_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00581/env_4_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00581/env_5_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00581/env_6_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00581/env_7_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-towel">
+          <video poster="" id="towel" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00581/env_8_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <br/>
+      </div>
+
+      <!-- 00506. -->
+      <div id="automate-panel-00506" class="automate-panel is-automate-hidden">
+      <!-- <h3 class="title is-4">00506</h3> -->
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00506/env_0_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00506/env_1_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00506/env_2_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00506/env_3_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00506/env_4_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00506/env_5_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00506/env_6_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00506/env_7_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-towel">
+          <video poster="" id="towel" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00506/env_8_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <br/>
+      </div>
+
+      <!-- 00175. -->
+      <div id="automate-panel-00175" class="automate-panel is-automate-hidden">
+      <!-- <h3 class="title is-4">00175</h3> -->
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00175/env_0_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00175/env_1_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00175/env_2_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00175/env_3_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00175/env_4_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00175/env_5_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00175/env_6_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00175/env_7_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-towel">
+          <video poster="" id="towel" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00175/env_8_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <br/>
+      </div>
+
+      <!-- 00308. -->
+      <div id="automate-panel-00308" class="automate-panel is-automate-hidden">
+      <!-- <h3 class="title is-4">00308</h3> -->
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00308/env_0_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00308/env_1_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00308/env_2_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00308/env_3_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00308/env_4_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00308/env_5_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00308/env_6_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00308/env_7_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-towel">
+          <video poster="" id="towel" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00308/env_8_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <br/>
+      </div>
+
+      <!-- 00726. -->
+      <div id="automate-panel-00726" class="automate-panel is-automate-hidden">
+      <!-- <h3 class="title is-4">00726</h3> -->
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00726/env_0_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00726/env_1_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00726/env_2_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00726/env_3_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00726/env_4_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/automate/00726/env_5_recording.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <br/>
+      </div>
+
+      </div>
+    </div>
   </div>
 </section>
 

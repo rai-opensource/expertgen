@@ -17,6 +17,11 @@ body {
   font-variant: small-caps;
 }
 
+.textsc {
+  font-variant: small-caps;
+  font-variant-caps: small-caps;
+}
+
 
 .teaser .hero-body {
   padding-top: 0;
@@ -27,9 +32,64 @@ body {
   font-family: 'Google Sans', sans-serif;
 }
 
-
-.publication-title {
+.teaser-pdf {
+  border: 0;
+  border-radius: 10px;
+  overflow: hidden;
 }
+
+.sim2real-selector .button.is-selected,
+.anytask-selector .button.is-selected,
+.automate-selector .button.is-selected,
+.compare-task-selector .button.is-selected {
+  background-color: hsl(204, 86%, 53%);
+  border-color: transparent;
+  color: #fff;
+}
+.sim2real-selector .button.is-selected:hover,
+.anytask-selector .button.is-selected:hover,
+.automate-selector .button.is-selected:hover,
+.compare-task-selector .button.is-selected:hover {
+  filter: brightness(0.98);
+}
+
+.anytask-panel.is-anytask-hidden {
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+  margin: 0 !important;
+}
+
+.automate-panel.is-automate-hidden {
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+  margin: 0 !important;
+}
+
+.compare-task-panel.is-compare-hidden {
+  display: none;
+}
+
+.teaser-video {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.compare-video {
+  width: 100%;
+  height: auto;
+  max-width: 340px;
+  max-height: 240px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
 
 .publication-banner {
   max-height: parent;
@@ -44,11 +104,11 @@ body {
   object-fit: fit;
 }
 
-.publication-header .hero-body {
-}
-
 .publication-title {
     font-family: 'Google Sans', sans-serif;
+    /* Override Bulma's `.title.is-1` sizing to be a bit smaller and responsive. */
+    font-size: clamp(2.8rem, 2vw + 2.9rem, 2.3rem);
+    line-height: 1.15;
 }
 
 .publication-authors {
@@ -67,9 +127,6 @@ body {
     font-weight: bolder;
 }
 
-.publication-authors {
-}
-
 .publication-authors a {
    color: hsl(204, 86%, 53%) !important;
 }
@@ -80,13 +137,6 @@ body {
 
 .author-block {
   display: inline-block;
-}
-
-.publication-banner img {
-}
-
-.publication-authors {
-  /*color: #4286f4;*/
 }
 
 .publication-video {
@@ -105,9 +155,6 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-}
-
-.publication-body img {
 }
 
 .results-carousel {
@@ -136,9 +183,6 @@ body {
 .interpolation-panel .interpolation-image {
   width: 100%;
   border-radius: 5px;
-}
-
-.interpolation-video-column {
 }
 
 .interpolation-panel .slider {
