@@ -43,7 +43,81 @@ document.addEventListener('DOMContentLoaded', function () {
     autoplay: false,
     autoplaySpeed: 3000,
   };
-  bulmaCarousel.attach('.carousel', options);
+  function safePause(video) {
+    try { video.pause(); } catch (e) { }
+  }
+  function safePlayMuted(video) {
+    try { video.muted = true; } catch (e) { }
+    try { video.play(); } catch (e) { }
+  }
+  function isElementHidden(el) {
+    // Covers display:none, visibility:hidden, and hidden ancestors.
+    if (!el || el.nodeType !== 1) return true;
+    if (el.closest('.is-hidden, .is-anytask-hidden, .is-automate-hidden, .is-compare-hidden')) return true;
+    return false;
+  }
+  function pauseAllVideosExcept(keep) {
+    var keepSet = new Set((keep || []).filter(Boolean));
+    document.querySelectorAll('video').forEach(function (v) {
+      if (!keepSet.has(v)) safePause(v);
+    });
+  }
+  function refreshCarouselVideos(instance) {
+    if (!instance || !instance.element) return;
+    // Only keep videos inside the currently shown slide(s) playing.
+    var keep = [];
+    var currentSlides = instance.element.querySelectorAll('.slider-item.is-current, .slider-item.is-active');
+    if (currentSlides && currentSlides.length) {
+      currentSlides.forEach(function (slide) {
+        slide.querySelectorAll('video').forEach(function (v) {
+          if (!isElementHidden(v)) keep.push(v);
+        });
+      });
+    } else {
+      // Fallback: keep the first video in this carousel.
+      var first = instance.element.querySelector('video');
+      if (first && !isElementHidden(first)) keep.push(first);
+    }
+
+    // Pause videos in this carousel that aren't "keep".
+    var keepSet = new Set(keep);
+    instance.element.querySelectorAll('video').forEach(function (v) {
+      if (!keepSet.has(v)) safePause(v);
+    });
+    // Try to autoplay muted for visible current slide(s).
+    keep.forEach(function (v) { safePlayMuted(v); });
+  }
+
+  var carouselInstances = bulmaCarousel.attach('.carousel', options) || [];
+  carouselInstances.forEach(function (instance) {
+    try {
+      instance.on('show', function () { refreshCarouselVideos(instance); });
+      instance.on('after:show', function () { refreshCarouselVideos(instance); });
+    } catch (e) { }
+    refreshCarouselVideos(instance);
+  });
+
+  // On initial load, make sure hidden-panel videos aren't decoding in background.
+  // Keep only videos that are not in hidden panels AND are in the current carousel slide.
+  // (Anything else can be resumed via carousel navigation/buttons.)
+  (function initialVideoQuiesce() {
+    var keep = [];
+    carouselInstances.forEach(function (instance) {
+      if (!instance || !instance.element) return;
+      if (!isElementHidden(instance.element)) {
+        var cur = instance.element.querySelectorAll('.slider-item.is-current, .slider-item.is-active');
+        if (cur && cur.length) {
+          cur.forEach(function (slide) {
+            slide.querySelectorAll('video').forEach(function (v) {
+              if (!isElementHidden(v)) keep.push(v);
+            });
+          });
+        }
+      }
+    });
+    pauseAllVideosExcept(keep);
+    keep.forEach(function (v) { safePlayMuted(v); });
+  })();
 
   // Sim-to-real single-video toggle buttons (optional — only if present in DOM)
   var sim2realButtons = document.querySelectorAll('[data-sim2real-target]');
@@ -68,6 +142,8 @@ document.addEventListener('DOMContentLoaded', function () {
         try { video.play(); } catch (e) { }
       }
     });
+    // Also quiesce carousel videos when switching panels.
+    carouselInstances.forEach(function (instance) { refreshCarouselVideos(instance); });
   }
   if (sim2realButtons.length && sim2realPanels.length) {
     sim2realButtons.forEach(function (btn) {
@@ -109,6 +185,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Let bulma-carousel recalc widths after showing a different panel.
     try { window.dispatchEvent(new Event('resize')); } catch (e) { }
+    carouselInstances.forEach(function (instance) { refreshCarouselVideos(instance); });
   }
   if (anytaskButtons.length && anytaskPanels.length) {
     anytaskButtons.forEach(function (btn) {
@@ -145,6 +222,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     try { window.dispatchEvent(new Event('resize')); } catch (e) { }
+    carouselInstances.forEach(function (instance) { refreshCarouselVideos(instance); });
   }
   if (automateButtons.length && automatePanels.length) {
     automateButtons.forEach(function (btn) {
@@ -178,6 +256,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       }
     });
+    carouselInstances.forEach(function (instance) { refreshCarouselVideos(instance); });
   }
   if (compareTaskButtons.length && compareTaskPanels.length) {
     compareTaskButtons.forEach(function (btn) {

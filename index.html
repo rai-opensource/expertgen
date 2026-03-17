@@ -9,6 +9,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ExpertGen: Scalable Sim-to-Real Expert Policy Learning from Imperfect Behavior Priors</title>
 
+  <script>
+    // Safety: prevent a "decode storm" from dozens of autoplay videos.
+    // Some Linux browser+driver stacks can crash (SIGILL) once media/GPU
+    // acceleration spins up after load. We disable autoplay and preloading
+    // as early as possible, and only allow explicit play later.
+    (function () {
+      function quiesceVideos() {
+        try {
+          var videos = document.querySelectorAll('video');
+          videos.forEach(function (v) {
+            try { v.autoplay = false; } catch (e) { }
+            try { v.preload = 'none'; } catch (e) { }
+            try { v.removeAttribute('autoplay'); } catch (e) { }
+            try { v.pause(); } catch (e) { }
+            // Cancel any pending network/decode work.
+            try { v.load(); } catch (e) { }
+          });
+        } catch (e) { }
+      }
+
+      if (document.readyState === 'interactive' || document.readyState === 'complete') {
+        quiesceVideos();
+      } else {
+        document.addEventListener('readystatechange', function () {
+          if (document.readyState === 'interactive') quiesceVideos();
+        });
+      }
+    })();
+  </script>
+
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
   <script>
