@@ -62,30 +62,59 @@ document.addEventListener('DOMContentLoaded', function () {
       if (!keepSet.has(v)) safePause(v);
     });
   }
+  function getVisibleSlides(instance) {
+    // Determine visibility by geometry instead of relying on plugin classes.
+    // This works even when slidesToShow=3 and only one slide is marked current.
+    if (!instance || !instance.element) return [];
+    var wrapper = instance.element.querySelector('.slider') || instance.element;
+    var container = instance.element.querySelector('.slider-container') || instance.element;
+    var wrapperRect;
+    try { wrapperRect = wrapper.getBoundingClientRect(); } catch (e) { return []; }
+    var slides = container.querySelectorAll('.slider-item') || [];
+    var visible = [];
+    slides.forEach(function (slide) {
+      try {
+        var r = slide.getBoundingClientRect();
+        // Consider slide visible if it overlaps the wrapper horizontally by > ~10px.
+        var overlap = Math.min(r.right, wrapperRect.right) - Math.max(r.left, wrapperRect.left);
+        if (overlap > 10 && r.bottom > wrapperRect.top && r.top < wrapperRect.bottom) {
+          visible.push(slide);
+        }
+      } catch (e) { }
+    });
+    // Keep DOM order (left-to-right) for determinism.
+    return visible;
+  }
   function refreshCarouselVideos(instance) {
     if (!instance || !instance.element) return;
-    // Only keep videos inside the currently shown slide(s) playing.
+    // Only keep videos inside the visible slides playing.
     var keep = [];
-    var currentSlides = instance.element.querySelectorAll('.slider-item.is-current, .slider-item.is-active');
-    if (currentSlides && currentSlides.length) {
-      currentSlides.forEach(function (slide) {
+    var visibleSlides = getVisibleSlides(instance);
+    if (visibleSlides && visibleSlides.length) {
+      visibleSlides.forEach(function (slide) {
         slide.querySelectorAll('video').forEach(function (v) {
           if (!isElementHidden(v)) keep.push(v);
         });
       });
-    } else {
+    }
+    if (!keep.length) {
       // Fallback: keep the first video in this carousel.
       var first = instance.element.querySelector('video');
       if (first && !isElementHidden(first)) keep.push(first);
     }
+
+    // Autoplay at most the first 3 visible videos (to avoid decode storms).
+    keep = keep.slice(0, 3);
 
     // Pause videos in this carousel that aren't "keep".
     var keepSet = new Set(keep);
     instance.element.querySelectorAll('video').forEach(function (v) {
       if (!keepSet.has(v)) safePause(v);
     });
-    // Try to autoplay muted for visible current slide(s).
-    keep.forEach(function (v) { safePlayMuted(v); });
+    // Try to autoplay muted. Stagger play calls slightly to improve reliability.
+    keep.forEach(function (v, idx) {
+      setTimeout(function () { safePlayMuted(v); }, idx * 50);
+    });
   }
 
   var carouselInstances = bulmaCarousel.attach('.carousel', options) || [];
@@ -105,18 +134,18 @@ document.addEventListener('DOMContentLoaded', function () {
     carouselInstances.forEach(function (instance) {
       if (!instance || !instance.element) return;
       if (!isElementHidden(instance.element)) {
-        var cur = instance.element.querySelectorAll('.slider-item.is-current, .slider-item.is-active');
-        if (cur && cur.length) {
-          cur.forEach(function (slide) {
-            slide.querySelectorAll('video').forEach(function (v) {
-              if (!isElementHidden(v)) keep.push(v);
-            });
+        getVisibleSlides(instance).forEach(function (slide) {
+          slide.querySelectorAll('video').forEach(function (v) {
+            if (!isElementHidden(v)) keep.push(v);
           });
-        }
+        });
       }
     });
+    keep = keep.slice(0, 3);
     pauseAllVideosExcept(keep);
-    keep.forEach(function (v) { safePlayMuted(v); });
+    keep.forEach(function (v, idx) {
+      setTimeout(function () { safePlayMuted(v); }, idx * 50);
+    });
   })();
 
   // Sim-to-real single-video toggle buttons (optional — only if present in DOM)
